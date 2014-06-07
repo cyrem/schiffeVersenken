@@ -1,5 +1,11 @@
 package schiffeVersenken.gruppe2;
 
+/**
+ * 
+ * @author D.Hartkorn
+ * modified by:-
+ *
+ */
 public class CoordinateControl implements Control{
 
 	private Battlefield bf;
@@ -15,12 +21,6 @@ public class CoordinateControl implements Control{
 		CoordinateExtended(int x, int y){
 			
 			super(x,y);
-			
-		}
-		
-		public void setOffset(int offsetX,int offsetY){
-			
-			super.move(super.getX(), super.getY());
 			
 		}
 		
@@ -43,8 +43,7 @@ public class CoordinateControl implements Control{
 	
 	public boolean canCreateCoordinate(int x,int y,int offsetX,int offsetY){
 		
-		CoordinateExtended coords=new CoordinateExtended(x,y);
-		coords.setOffset(offsetX, offsetY);
+		CoordinateExtended coords=new CoordinateExtended(x+offsetX,y+offsetY);
 		return coords.isValidCoordinate(bf);
 		
 	}
