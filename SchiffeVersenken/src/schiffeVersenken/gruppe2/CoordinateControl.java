@@ -26,7 +26,7 @@ public class CoordinateControl implements Control{
 		
 		public boolean isValidCoordinate(Battlefield bf){
 			
-			if(super.getX()<0 || super.getX()>=bf.getWidth() || super.getY()<0 || super.getY()>=bf.getHeight())
+			if(super.getX()<0 || super.getX()>bf.getWidth() || super.getY()<0 || super.getY()>bf.getHeight())
 				return false;
 			return true;
 			
