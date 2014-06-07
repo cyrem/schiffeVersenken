@@ -22,6 +22,8 @@ public class Battlefield implements BattlefieldInterface{
 	private CoordinateControl coordsControl;
 	//controls ships
 	private ShipControl shipControl;
+	//player of the battlefield
+	private Player player;
 	
 	/**
 	 * Constructor
@@ -31,7 +33,7 @@ public class Battlefield implements BattlefieldInterface{
 	 * @param width
 	 * @param height
 	 */
-	public Battlefield(int width,int height){
+	public Battlefield(int width,int height,Player player){
 		
 		this.width=width;
 		this.height=height;
@@ -50,22 +52,15 @@ public class Battlefield implements BattlefieldInterface{
 		//depends on constants of interface
 		shipControl=new ShipControl(this,shipMinDistance,shipMaxOverlap);
 		
+		this.player=player;
+		
+		player.setBattlefield(this);
+		
 	}
 	
 	public LinkedList<ShipOnBattlefield> getShips(){
 		
 		return ships;
-		
-	}
-	
-	public void addShip(ShipOnBattlefield ship){
-		
-		ships.addLast(ship);
-	}
-	
-	public void clearShips(){
-		
-		ships.clear();
 		
 	}
 	
@@ -96,6 +91,12 @@ public class Battlefield implements BattlefieldInterface{
 	public ShipControl getShipControl(){
 		
 		return shipControl;
+		
+	}
+	
+	public Player getPlayer(){
+		
+		return player;
 		
 	}
 	

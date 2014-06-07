@@ -6,7 +6,7 @@ package schiffeVersenken.gruppe2;
  * modified by:-
  *
  */
-public class Ship {
+public class Ship{
 
 	private final int width;
 	private final int height;
@@ -62,7 +62,9 @@ public class Ship {
 			while(j<height){
 				if (hits[i][j]==false)
 					return true;
+				j++;
 			}
+			i++;
 		}
 		
 		return false;
