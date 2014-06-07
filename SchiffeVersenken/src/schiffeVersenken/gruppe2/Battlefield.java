@@ -2,6 +2,12 @@ package schiffeVersenken.gruppe2;
 
 import java.util.LinkedList;
 
+/**
+ * 
+ * @author D.Hartkorn
+ * modified by:-
+ *
+ */
 public class Battlefield {
 
 	private final int width;
