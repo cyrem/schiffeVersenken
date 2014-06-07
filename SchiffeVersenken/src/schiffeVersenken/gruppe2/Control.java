@@ -1,6 +1,14 @@
 package schiffeVersenken.gruppe2;
 
 public class Control {
+	
+	private Battlefield bf;
+	
+	Control(Battlefield bf){
+		
+		bf=this.bf;
+		
+	}
 
 	private class CoordinateControl extends Coordinate{
 		
@@ -24,6 +32,34 @@ public class Control {
 			return true;
 			
 		}
+		
+	}
+	
+	public boolean canCreateCoordinate(int x,int y){
+		
+		CoordinateControl coords=new CoordinateControl(x,y);
+		return coords.isValidCoordinate(bf);
+		
+	}
+	
+	public boolean canCreateCoordinate(int x,int y,int offsetX,int offsetY){
+		
+		CoordinateControl coords=new CoordinateControl(x,y);
+		coords.setOffset(offsetX, offsetY);
+		return coords.isValidCoordinate(bf);
+		
+	}
+	
+	public boolean canCreateCoordinateField(int x,int y,int width,int height){
+		
+		CoordinateControl coordsFirst=new CoordinateControl(x,y);
+		CoordinateControl coordsLast=new CoordinateControl(x,y);
+		
+		coordsLast.setOffset(width, height);
+		
+		if(coordsFirst.isValidCoordinate(bf)==true && coordsLast.isValidCoordinate(bf)==true)
+			return true;
+		return false;
 		
 	}
 	
