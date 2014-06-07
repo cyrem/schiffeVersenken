@@ -1,12 +1,16 @@
-/*
- * @author xyxxyxxy
- * */
 package schiffeVersenken.gruppe2;
 
+/**
+ * 
+ * @author R.Dietrich
+ * modified by:-
+ *
+ */
 public class Coordinate
 {
 	private int x;
 	private int y;
+	
 	public Coordinate(int x, int y)
 	{
 		this.x = x;

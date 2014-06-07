@@ -6,18 +6,31 @@ import java.util.LinkedList;
 /**
  * 
  * @author D.Hartkorn
- * modified by:-
+ * modified by:R.Dietrich(added toString)
  *
  */
-public class Battlefield {
+public class Battlefield implements BattlefieldInterface{
 
+	//dimensions
 	private final int width;
 	private final int height;
+	//hits by shots
 	private boolean hits[][];
+	//list of every ship on the battlefield
 	private LinkedList<ShipOnBattlefield> ships;
+	//controls coordinates
 	private CoordinateControl coordsControl;
+	//controls ships
 	private ShipControl shipControl;
 	
+	/**
+	 * Constructor
+	 * 
+	 * @author D.Hartkorn
+	 * modified by:-
+	 * @param width
+	 * @param height
+	 */
 	public Battlefield(int width,int height){
 		
 		this.width=width;
@@ -34,7 +47,8 @@ public class Battlefield {
 		
 		coordsControl=new CoordinateControl(this);
 		
-		shipControl=new ShipControl(this,1,0);
+		//depends on constants of interface
+		shipControl=new ShipControl(this,shipMinDistance,shipMaxOverlap);
 		
 	}
 	
@@ -85,18 +99,28 @@ public class Battlefield {
 		
 	}
 	
+	/**
+	 * counts the ships for each position of the whole battlefield
+	 * 
+	 * @author D.Hartkorn
+	 * modified by:-
+	 * @return
+	 */
 	public int[][] countShipsForEachPosition(){
 		
 		int shipsForEachPosition[][]=new int[width][height];
 		
+		//set the counter of each position to 0
 		for(int i=0;i<width;i++){
 			for(int j=0;j<width;j++){
 				shipsForEachPosition[i][j]=0;
 			}
 		}
 		
+		//go through all the ships
 		for(Iterator<ShipOnBattlefield> i=ships.iterator();i.hasNext();){
 			ShipOnBattlefield ship=i.next();
+			//add 1 to the counter for each ship field
 			for(int j=0;j<ship.getWidth();j++){
 				for(int k=0;k<ship.getHeight();k++){
 					shipsForEachPosition[ship.getCoordinate().getX()+j][ship.getCoordinate().getY()+k]++;
@@ -108,6 +132,12 @@ public class Battlefield {
 		
 	}
 	
+	/**
+	 * prints the battlefield
+	 * 
+	 * @author R.Dietrich
+	 * modified by:D.Hartkorn(fixed bug of swapped x and y)
+	 */
 	public String toString(){
 		
 		String result = "";
