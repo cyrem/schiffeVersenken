@@ -1,4 +1,4 @@
-//by xyxxyxxy
+/*@author xyxxyxxy*/
 package schiffeVersenken.gruppe2;
 
 public class Coordinate
@@ -30,6 +30,6 @@ public class Coordinate
 	}
 	public String toString()
 	{
-		return "(" + x + ", " + (char) (y + 64) + ")";
+		return "(" + x + ", " + y + ")";
 	}
 }
