@@ -69,8 +69,6 @@ public class AI implements Player,ShipConstants{
 		int random;
 		boolean error=false;
 		LinkedList<Coordinate> allPossiblePositions;
-		int r1;
-		int r2;
 		while(bf.getShipControl().noMoreShipsToPlace()==false && error==false){
 			
 			//place every ship of every type
