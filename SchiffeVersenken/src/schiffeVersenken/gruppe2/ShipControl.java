@@ -14,7 +14,7 @@ public class ShipControl implements Control{
 	
 	ShipControl(Battlefield bf,int minDistance,int maxOverlap){
 		
-		bf=this.bf;
+		this.bf=bf;
 		this.minDistance=minDistance;
 		this.maxOverlap=maxOverlap;
 		
@@ -40,7 +40,7 @@ public class ShipControl implements Control{
 		
 		for(int i=minX;i<maxX;i++){
 			for(int j=minY;j<maxY;j++){
-				if(shipsAtPosition[i][j]>=maxOverlap)
+				if(shipsAtPosition[i][j]>maxOverlap)
 					return false;
 			}
 		}

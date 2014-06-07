@@ -6,7 +6,7 @@ package schiffeVersenken.gruppe2;
  * modified by:-
  *
  */
-public abstract class Ship {
+public class Ship {
 
 	private final int width;
 	private final int height;
@@ -26,7 +26,7 @@ public abstract class Ship {
 		
 	}
 	
-	public abstract void hitByShot();
+	public void hitByShot(){}
 	
 	public boolean isAlive(){
 		

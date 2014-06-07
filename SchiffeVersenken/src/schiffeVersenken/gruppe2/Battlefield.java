@@ -79,6 +79,12 @@ public class Battlefield {
 		
 	}
 	
+	public ShipControl getShipControl(){
+		
+		return shipControl;
+		
+	}
+	
 	public int[][] countShipsForEachPosition(){
 		
 		int shipsForEachPosition[][]=new int[width][height];
@@ -93,7 +99,7 @@ public class Battlefield {
 			ShipOnBattlefield ship=i.next();
 			for(int j=0;j<ship.getWidth();j++){
 				for(int k=0;k<ship.getHeight();k++){
-					shipsForEachPosition[ship.getCoordinate().getX()][ship.getCoordinate().getY()]++;
+					shipsForEachPosition[ship.getCoordinate().getX()+j][ship.getCoordinate().getY()+k]++;
 				}
 			}
 		}
@@ -134,10 +140,10 @@ public class Battlefield {
 		}
 		result += "\n";
 		
-		for(int x = 0; x < width; x++){
+		for(int y = 0; y < height; y++){
 			//y axis
-			result += (char) (x + 1 + 64);
-			for(int y = 0; y < height; y++){
+			result += (char) (y + 1 + 64);
+			for(int x = 0; x < width; x++){
 				result += "  " + field[x][y];
 			}
 			result += "\n";

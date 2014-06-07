@@ -12,7 +12,7 @@ public class CoordinateControl implements Control{
 	
 	CoordinateControl(Battlefield bf){
 		
-		bf=this.bf;
+		this.bf=bf;
 		
 	}
 
