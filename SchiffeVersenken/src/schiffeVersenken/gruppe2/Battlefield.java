@@ -101,52 +101,49 @@ public class Battlefield {
 		return shipsForEachPosition;
 		
 	}
-	public String toString()
-	{
+	
+	public String toString(){
+		
 		String result = "";
 		char[][] field = new char[width][height];
-		int[][] ships = this.countShipsAtPosition();
+		int[][] ships = this.countShipsForEachPosition();
+		
 		//set char array
-		for(int x = 0; x < width; x++)
-		{
-			for(int y = 0; y < height; y++)
-			{
+		for(int x = 0; x < width; x++){
+			for(int y = 0; y < height; y++){
 				field[x][y] = '~';
-				if(hits[x][y])
-				{
+				if(hits[x][y]){
 					field[x][y] = 'o';
 				}
-				if(ships[x][y] > 0)
-				{
+				if(ships[x][y] > 0){
 					field[x][y] = 'S';
-					if(hits[x][y])
-					{
+					if(hits[x][y]){
 						field[x][y] = 'X';
 					}
 				}
 			}
 		}
 		result += " ";
-		for(int i = 0; i < width; i++)
-		{
-			if(i < 10)
-			{
+		
+		for(int i = 0; i < width; i++){
+			if(i < 10){
 				result += " ";
 			}
 			//x axis
 			result += " " + (i + 1);
 		}
 		result += "\n";
-		for(int x = 0; x < width; x++)
-		{
+		
+		for(int x = 0; x < width; x++){
 			//y axis
 			result += (char) (x + 1 + 64);
-			for(int y = 0; y < height; y++)
-			{
+			for(int y = 0; y < height; y++){
 				result += "  " + field[x][y];
 			}
 			result += "\n";
 		}
 		return result;
+		
 	}
+	
 }
