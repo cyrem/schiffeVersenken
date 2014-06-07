@@ -56,4 +56,10 @@ public class CoordinateControl implements Control{
 		
 	}
 	
+	public Coordinate createCoordinateWithOffset(int x,int y,int offsetX,int offsetY){
+		
+		return new Coordinate(x+offsetX,y+offsetY);
+		
+	}
+	
 }
