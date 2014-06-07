@@ -20,8 +20,7 @@ public class CoordinateControl implements Control{
 		
 		public void setOffset(int offsetX,int offsetY){
 			
-			super.setX(super.getX()+offsetX);
-			super.setY(super.getY()+offsetY);
+			super.move(super.getX(), super.getY());
 			
 		}
 		
