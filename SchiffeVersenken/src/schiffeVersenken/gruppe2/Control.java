@@ -2,6 +2,8 @@ package schiffeVersenken.gruppe2;
 
 public class Control {
 	
+	int testZumHochladenLoeschenBitteXD;
+	
 	private Battlefield bf;
 	
 	Control(Battlefield bf){
