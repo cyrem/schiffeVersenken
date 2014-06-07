@@ -1,4 +1,6 @@
-/*@author xyxxyxxy*/
+/*
+ * @author xyxxyxxy
+ * */
 package schiffeVersenken.gruppe2;
 
 public class Coordinate
