@@ -79,13 +79,13 @@ public class Battlefield {
 		
 	}
 	
-	public int[][] countShipsAtPosition(){
+	public int[][] countShipsForEachPosition(){
 		
-		int shipsAtPosition[][]=new int[width][height];
+		int shipsForEachPosition[][]=new int[width][height];
 		
 		for(int i=0;i<width;i++){
 			for(int j=0;j<width;j++){
-				shipsAtPosition[i][j]=0;
+				shipsForEachPosition[i][j]=0;
 			}
 		}
 		
@@ -93,12 +93,12 @@ public class Battlefield {
 			ShipOnBattlefield ship=i.next();
 			for(int j=0;j<ship.getWidth();j++){
 				for(int k=0;k<ship.getHeight();k++){
-					shipsAtPosition[ship.getCoordinate().getX()][ship.getCoordinate().getY()]++;
+					shipsForEachPosition[ship.getCoordinate().getX()][ship.getCoordinate().getY()]++;
 				}
 			}
 		}
 		
-		return shipsAtPosition;
+		return shipsForEachPosition;
 		
 	}
 	

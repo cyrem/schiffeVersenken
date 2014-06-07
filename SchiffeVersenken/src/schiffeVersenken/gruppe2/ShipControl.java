@@ -22,7 +22,7 @@ public class ShipControl implements Control{
 	
 	private boolean canOverlapAtField(Ship ship,int x,int y){
 		
-		int shipsAtPosition[][]=bf.countShipsAtPosition();
+		int shipsAtPosition[][]=bf.countShipsForEachPosition();
 		
 		int minX=x-minDistance;
 		int maxX=x+ship.getWidth()+minDistance;
