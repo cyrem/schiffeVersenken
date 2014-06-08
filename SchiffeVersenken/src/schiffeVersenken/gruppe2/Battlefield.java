@@ -9,7 +9,7 @@ import java.util.LinkedList;
  * modified by:R.Dietrich(added toString)
  *
  */
-public class Battlefield implements BattlefieldInterface{
+public class Battlefield implements BattlefieldConstants{
 
 	//dimensions
 	private final int width;

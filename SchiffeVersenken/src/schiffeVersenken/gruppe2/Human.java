@@ -97,6 +97,9 @@ public class Human implements Player,ShipConstants{
 			
 		}
 		
+		//final print after creation
+		System.out.println(bf.toString());
+		
 	}
 	
 }

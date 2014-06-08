@@ -10,13 +10,11 @@ public class Main {
 
 	public static void main(String[] args) {
 		
-		//----------TEST----------
-		Player player=new AI();
-		//Player player=new Human();
-		Battlefield bf=new Battlefield(10,10,player);
-		player.addShips();
-		System.out.println(bf.toString());
-		//----------TEST END----------
+		//----------GAME START----------
+		GameControl gc=new GameControl();
+		gc.init();
+		gc.addShips();
+		//----------GAME END----------
 
 	}
 
