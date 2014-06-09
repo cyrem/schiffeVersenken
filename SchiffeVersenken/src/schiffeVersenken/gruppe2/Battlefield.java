@@ -2,11 +2,13 @@ package schiffeVersenken.gruppe2;
 
 import java.util.Iterator;
 import java.util.LinkedList;
+import java.util.Scanner;
 
 /**
  * 
  * @author D.Hartkorn
  * modified by:R.Dietrich(added toString)
+ * modified by:M.Jürgens
  *
  */
 public class Battlefield implements BattlefieldConstants{
@@ -181,6 +183,31 @@ public class Battlefield implements BattlefieldConstants{
 		}
 		return result;
 		
+	}	
+	/**
+	 * pick loc to shoot
+	 * 
+	 * @author Mathias Jürgens
+	 * 
+	 */
+	public Coordinate shootLoc(){
+		Scanner scan = new Scanner(System.in);
+		boolean retVal = false;
+		while(retVal ==false){
+			System.out.println("Choose Coords to shoot, Example Format: B7");
+			String in = scan.nextLine();
+			in.trim();
+			if(in.length() == 2){
+				Coordinate shoot = new Coordinate(Integer.parseInt(in.substring(1)),(char)in.charAt(0));
+				if(this.coordsControl.canCreateCoordinate(shoot)){
+					retVal = true;
+					return shoot;
+				}else{
+					System.out.println("Invalid Coordinates, try again");
+				}
+			}
+		}
+		return null;
 	}
-	
+
 }

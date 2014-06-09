@@ -5,12 +5,13 @@ import java.util.LinkedList;
 /**
  * 
  * @author D.Hartkorn
- * modified by:-
+ * modified by:M.Jürgens
  *
  */
 public class AI implements Player,ShipConstants{
 
 	private Battlefield bf;
+	private WeaponControl wc;
 	private int shipsToPlaceLeft[];
 	
 	public AI(){
@@ -19,6 +20,16 @@ public class AI implements Player,ShipConstants{
 		for(int i=0;i<shipSizes.length;i++)
 			shipsToPlaceLeft[i]=shipSizes[i].getAmount();
 		
+	}
+	
+	
+
+	@Override
+	public void setWeaponControl(WeaponControl w){
+		this.wc = new WeaponControl();
+	}
+	public WeaponControl getWeaponControl(){
+		return this.wc;
 	}
 	
 	public void setBattlefield(Battlefield bf){
@@ -95,5 +106,22 @@ public class AI implements Player,ShipConstants{
 		System.out.println("AI: I just created my ships!");
 		
 	}
+
+	/**
+	 * pick loc to shoot
+	 * 
+	 * @author Mathias Jürgens
+	 * 
+	 */
+
+	@Override
+	public void shoot() {
+		String WeaponSelection = this.wc.selectWeapon();
+		Coordinate shootLoc = this.bf.shootLoc();
+				
+		
+	}
+
+
 	
 }

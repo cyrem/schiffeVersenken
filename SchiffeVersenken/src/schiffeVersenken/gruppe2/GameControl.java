@@ -54,6 +54,9 @@ public class GameControl implements Control,BattlefieldConstants{
 		//add battlefields
 		Battlefield bf1=new Battlefield(bfWidth,bfHeight,player1);
 		Battlefield bf2=new Battlefield(bfWidth,bfHeight,player2);
+//		System.out.println(bf1.toString());
+		System.out.println(this.player1.toString());
+		bf1.shoot();
 		
 	}
 	

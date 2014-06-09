@@ -5,7 +5,7 @@ import java.util.Scanner;
 /**
  * 
  * @author D.Hartkorn
- * modified by:-
+ * modified by:M.Jürgens
  *
  */
 public class Human implements Player,ShipConstants{
@@ -13,9 +13,9 @@ public class Human implements Player,ShipConstants{
 	private Battlefield bf;
 	private int shipsToPlaceLeft[];
 	private Scanner scanner = new Scanner(System.in);
+	private WeaponControl wc;
 	
 	public Human(){
-		
 		shipsToPlaceLeft=new int[shipSizes.length];
 		for(int i=0;i<shipSizes.length;i++)
 			shipsToPlaceLeft[i]=shipSizes[i].getAmount();
@@ -28,10 +28,19 @@ public class Human implements Player,ShipConstants{
 		
 	}
 	
+	
+	@Override
+	public void setWeaponControl(WeaponControl w){
+		this.wc = new WeaponControl();
+	}
 	public int[] getShipsToPlaceLeft(){
 		
 		return shipsToPlaceLeft;
 		
+	}
+	
+	public WeaponControl getWeaponControl(){
+		return this.wc;
 	}
 	
 	public void setShipsToPlaceLeft(int index, int amount){
@@ -99,6 +108,21 @@ public class Human implements Player,ShipConstants{
 		
 		//final print after creation
 		System.out.println(bf.toString());
+		
+	}
+	
+	/**
+	 * pick loc to shoot
+	 * 
+	 * @author Mathias Jürgens
+	 * 
+	 */
+	
+	@Override
+	public void shoot() {
+		String WeaponSelection = this.wc.selectWeapon();
+		Coordinate shootLoc = this.bf.shootLoc();
+				
 		
 	}
 	

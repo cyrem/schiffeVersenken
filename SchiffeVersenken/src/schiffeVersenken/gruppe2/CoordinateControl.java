@@ -65,6 +65,22 @@ public class CoordinateControl implements Control{
 		return coords.isValidCoordinate(bf);
 		
 	}
+	/**
+	 * checks if the coordinate fits onto the battlefield
+	 * 
+	 * @author M.Jürgens
+	 * modified by:-
+	 * @param x
+	 * @param y
+	 * @return
+	 */
+	public boolean canCreateCoordinate(Coordinate c){
+		
+		CoordinateExtended coords=new CoordinateExtended(c.getX(),c.getY());
+		return coords.isValidCoordinate(bf);
+		
+	}
+	
 	
 	/**
 	 * checks if the coordinate with a given offset fits onto the battlefield
