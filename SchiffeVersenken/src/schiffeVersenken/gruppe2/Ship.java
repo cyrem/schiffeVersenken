@@ -11,6 +11,7 @@ public class Ship{
 	private final int width;
 	private final int height;
 	private boolean hits[][];
+	boolean alive=true;
 	
 	/**
 	 * Constructor
@@ -40,11 +41,22 @@ public class Ship{
 	 * @author -
 	 * modified by:-
 	 */
-	public void hitByShot(){
+	public void hitByShot(Coordinate coords, Weapon weapon){
 		
-		//TO DO
-		
-	}
+		int i=coords.getX();
+		int j=coords.getY();
+			if(weapon.getName().equals("Nuclear")){
+				for(int x=i; x < getWidth(); x++){
+					for(int y=j; y < getHeight(); y++){
+						this.hits[x][y]=true;
+					}
+				}
+				this.alive=false;
+			}else{
+				this.hits[i][j]=true;
+				this.alive=this.isAlive();
+			}
+		}
 	
 	/**
 	 * returns whether the ship is still alive

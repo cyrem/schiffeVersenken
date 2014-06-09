@@ -17,12 +17,11 @@ public class ShipOnBattlefield extends Ship{
 		
 	}
 	
-	public void hitByShot(){
+	public void hitByShot(Coordinate coords, Weapon weapon) {
 		
-		//to do
-		
+		super.hitByShot(coords, weapon);
 	}
-	
+
 	public boolean isAlive(){
 		
 		return super.isAlive();

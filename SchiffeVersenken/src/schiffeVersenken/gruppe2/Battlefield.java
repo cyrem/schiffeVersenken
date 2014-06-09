@@ -24,6 +24,8 @@ public class Battlefield implements BattlefieldConstants{
 	private CoordinateControl coordsControl;
 	//controls ships
 	private ShipControl shipControl;
+	//ships on the battlefield
+	private ShipOnBattlefield shipOnBattleField;
 	//player of the battlefield
 	private Player player;
 	
@@ -201,13 +203,24 @@ public class Battlefield implements BattlefieldConstants{
 				Coordinate shoot = new Coordinate(Integer.parseInt(in.substring(1)),(char)in.charAt(0));
 				if(this.coordsControl.canCreateCoordinate(shoot)){
 					retVal = true;
+					scan.close();
 					return shoot;
 				}else{
 					System.out.println("Invalid Coordinates, try again");
 				}
 			}
 		}
+		scan.close();
 		return null;
+	}
+	
+	public void checkHit(Coordinate coords, Weapon weapon){
+		for(int i=0; i<ships.size(); i++){
+			Coordinate c = ships.get(i).getCoordinate();
+			if(c.getX()==coords.getX() && c.getY()==coords.getY()){
+				shipOnBattleField.hitByShot(coords, weapon);
+			}
+		}
 	}
 
 }
