@@ -142,7 +142,7 @@ public class AI implements Player,ShipConstants{
 		Coordinate shootLoc = new Coordinate((int)(Math.random()*bf.getWidth()),(int)(Math.random()*bf.getHeight()));
 		System.out.println("AI: I just chose a shot location!");		
 		
-		opponent.getBattlefield().getHit(shootLoc, weaponSelection);
+		while(opponent.getBattlefield().getHit(shootLoc, weaponSelection));
 		System.out.println("AI: I just shot!");
 	}
 

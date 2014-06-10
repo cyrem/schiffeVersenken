@@ -59,9 +59,6 @@ public class GameControl implements Control,BattlefieldConstants{
 		player1.setOpponent(player2);
 		player2.setOpponent(player1);
 		
-		//System.out.println(bf1.toString());
-		System.out.println(this.player1.toString());
-		
 	}
 	
 	/**
@@ -95,12 +92,10 @@ public class GameControl implements Control,BattlefieldConstants{
 		while(player1.getBattlefield().noMoreShips()==false && player2.getBattlefield().noMoreShips()==false){
 			
 			player1.shoot();
-			//if(player2  instanceof Human)
-				System.out.println(player2.getBattlefield().toString());
+			System.out.println(player2.getBattlefield().toString());
 			if(player2.getBattlefield().noMoreShips()==false){
 				player2.shoot();
-				//if(player1  instanceof Human)
-					System.out.println(player1.getBattlefield().toString());
+				System.out.println(player1.getBattlefield().toString());
 			}
 			
 		}

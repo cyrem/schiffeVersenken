@@ -34,30 +34,44 @@ public class Ship{
 		
 	}
 	
+	public boolean[][] getHits(){
+		
+		return hits;
+		
+	}
+	
 	/**
 	 * Handle shot at a specific position
 	 * 
 	 * @author D.Kern-
 	 * modified by:D.Hartkorn(avoid checking for specific weapon names;stop)
 	 */
-	public void hitByShot(Coordinate coords, Weapon weapon){
+	public boolean hitByShot(Coordinate coords, Weapon weapon){
 		
 		int i=coords.getX();
 		int j=coords.getY();
+		boolean returnTrue=false;
 		
 		//stop when ship is not shot at
 		if(i<0 || i>=width || j<0 || j>=height)
-			return;
+			return false;
 		
 		if(weapon.getDestroyShipInstant()==true){
 			for(int x=0; x < width; x++){
 				for(int y=0; y < height; y++){
-					hits[x][y]=true;
+					if(hits[x][y]==false){
+						hits[x][y]=true;
+						if(isAlive())
+							returnTrue=true;
+					}
 				}
 			}
 		}else{
 			hits[i][j]=true;
+			if(isAlive())
+				returnTrue=true;
 		}
+		return returnTrue;
 		
 	}
 	
@@ -76,8 +90,6 @@ public class Ship{
 		while(i<width){
 			j=0;
 			while(j<height){
-				System.out.println("i="+i+"___");
-				System.out.println("j="+j+"["+hits[i][j]);
 				if(hits[i][j]==false)
 					return true;
 				j++;

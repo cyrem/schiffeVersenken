@@ -146,7 +146,7 @@ public class Human implements Player,ShipConstants{
 		Weapon weaponSelection = wc.selectWeapon();
 		Coordinate shootLoc = bf.getCoordinateControl().shootLoc();
 				
-		opponent.getBattlefield().getHit(shootLoc, weaponSelection);
+		while(opponent.getBattlefield().getHit(shootLoc, weaponSelection));
 	}
 	
 }

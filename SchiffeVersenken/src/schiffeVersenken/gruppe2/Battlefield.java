@@ -172,11 +172,36 @@ public class Battlefield implements BattlefieldConstants{
 				if(hits[x][y]){
 					field[x][y] = 'o';
 				}
-				if(ships[x][y] > 0){
-					field[x][y] = 'S';
-					if(hits[x][y]){
-						field[x][y] = 'X';
-					}
+				//if(ships[x][y] > 0){
+					//field[x][y] = 'S';
+					//if(hits[x][y]){
+					//	field[x][y] = 'X';
+					//}
+				//}
+			}
+		}
+		
+		ShipOnBattlefield ship;
+		boolean shiphits[][];
+		
+		for(Iterator<ShipOnBattlefield> i=this.ships.iterator();i.hasNext();){
+			ship=i.next();
+			shiphits=ship.getHits();
+			for(int j=0;j<ship.getWidth();j++){
+				for(int k=0;k<ship.getHeight();k++){
+					if(shiphits[j][k]==true)
+						field[j+ship.getCoordinate().getX()][k+ship.getCoordinate().getY()]='X';
+				}
+			}
+		}
+		if(player instanceof Human)
+		for(Iterator<ShipOnBattlefield> i=this.ships.iterator();i.hasNext();){
+			ship=i.next();
+			shiphits=ship.getHits();
+			for(int j=0;j<ship.getWidth();j++){
+				for(int k=0;k<ship.getHeight();k++){
+					if(shiphits[j][k]==false)
+						field[j+ship.getCoordinate().getX()][k+ship.getCoordinate().getY()]='S';
 				}
 			}
 		}
@@ -211,16 +236,20 @@ public class Battlefield implements BattlefieldConstants{
 	 * @param coords
 	 * @param weapon
 	 */
-	public void getHit(Coordinate coords, Weapon weapon){
+	public boolean getHit(Coordinate coords, Weapon weapon){
 	
+		boolean returnTrue=false;
+		
 		for(Iterator<ShipOnBattlefield> i=ships.iterator();i.hasNext();){
 			
 			//refresh ship
-			i.next().hitByShot(coords, weapon);
+			if(i.next().hitByShot(coords, weapon))
+				returnTrue=true;
 			//refresh battlefield
 			hits[coords.getX()][coords.getY()]=true;
 			
 		}
+		return returnTrue;
 		
 	}
 
