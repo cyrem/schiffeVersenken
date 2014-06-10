@@ -46,9 +46,9 @@ public class WeaponControl implements WeaponConstants {
 				}
 			}
 			
-			int auswahl = scan.nextInt();
+			int auswahl = scan.nextInt()-1;
 	
-			if (auswahl > 0 && auswahl < this.avaibleWeapons.size()
+			if (auswahl >= 0 && auswahl < this.avaibleWeapons.size()
 					&& this.avaibleWeapons.get(auswahl).getAmount() != 0) {
 				retVal = true;
 				this.avaibleWeapons.get(auswahl).decreaseAmmo();

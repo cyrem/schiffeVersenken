@@ -2,7 +2,7 @@ package schiffeVersenken.gruppe2;
 
 /**
  * 
- * @author M.JÃ¼rgens
+ * @author M.Jürgens
  * modified by:D.Hartkorn
  *
  */

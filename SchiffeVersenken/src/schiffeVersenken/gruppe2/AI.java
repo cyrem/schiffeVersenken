@@ -14,6 +14,7 @@ public class AI implements Player,ShipConstants{
 	private WeaponControl wc;
 	private int shipsToPlaceLeft[];
 	private Player opponent;
+	private String typeName="Bot";
 	
 	public AI(){
 		
@@ -22,6 +23,12 @@ public class AI implements Player,ShipConstants{
 			shipsToPlaceLeft[i]=shipSizes[i].getAmount();
 		
 		wc=new WeaponControl();
+		
+	}
+	
+	public String getTypeName(){
+		
+		return typeName;
 		
 	}
 	
@@ -88,7 +95,7 @@ public class AI implements Player,ShipConstants{
 	 * @author D.Hartkorn
 	 * modified by:-
 	 */
-	public void addShips() throws Exception{
+	public void addShips() throws CannotPlaceShipsException{
 		
 		int random;
 		boolean error=false;
@@ -104,7 +111,7 @@ public class AI implements Player,ShipConstants{
 					allPossiblePositions=bf.getShipControl().allPossiblePositions(new Ship(shipSizes[i].getWidth(),shipSizes[i].getHeight()));
 					//an error occurs when there are no possibilities left
 					if(allPossiblePositions.isEmpty() && bf.getShipControl().noMoreShipsToPlace()==false){
-						throw new Exception("The battlefield is too small to place more ships!");
+						throw new CannotPlaceShipsException("The battlefield is too small to place more ships!");
 					}else{
 						//get random possible position
 						random=(int)(Math.random()*allPossiblePositions.size());

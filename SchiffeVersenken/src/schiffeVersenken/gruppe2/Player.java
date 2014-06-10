@@ -8,11 +8,12 @@ package schiffeVersenken.gruppe2;
  */
 public interface Player {
 	
+	public String getTypeName();
 	public void setOpponent(Player opponent);
 	public void setWeaponControl(WeaponControl c);
 	public void setBattlefield(Battlefield bf);
 	public Battlefield getBattlefield();
-	public void addShips() throws Exception;
+	public void addShips() throws CannotPlaceShipsException;
 	public void addShip(int shipSizeIndex,int x,int y);
 	public int[] getShipsToPlaceLeft();
 	public void setShipsToPlaceLeft(int index, int amount);

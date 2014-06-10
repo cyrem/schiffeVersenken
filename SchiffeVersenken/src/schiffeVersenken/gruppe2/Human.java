@@ -15,6 +15,7 @@ public class Human implements Player,ShipConstants{
 	private Scanner scanner = new Scanner(System.in);
 	private WeaponControl wc;
 	private Player opponent;
+	private String typeName="Human";
 	
 	public Human(){
 		shipsToPlaceLeft=new int[shipSizes.length];
@@ -22,6 +23,12 @@ public class Human implements Player,ShipConstants{
 			shipsToPlaceLeft[i]=shipSizes[i].getAmount();
 		
 		wc=new WeaponControl();
+		
+	}
+	
+	public String getTypeName(){
+		
+		return typeName;
 		
 	}
 	

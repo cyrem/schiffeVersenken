@@ -2,7 +2,6 @@ package schiffeVersenken.gruppe2;
 
 import java.util.Iterator;
 import java.util.LinkedList;
-import java.util.Scanner;
 
 /**
  * 
@@ -24,8 +23,6 @@ public class Battlefield implements BattlefieldConstants{
 	private CoordinateControl coordsControl;
 	//controls ships
 	private ShipControl shipControl;
-	//ships on the battlefield
-	private ShipOnBattlefield shipOnBattleField;
 	//player of the battlefield
 	private Player player;
 	
@@ -138,6 +135,25 @@ public class Battlefield implements BattlefieldConstants{
 	}
 	
 	/**
+	 * checks whether there are ships alive
+	 * 
+	 * @author D.Hartkorn
+	 * modified by:-
+	 * @return
+	 */
+	public boolean noMoreShips(){
+		
+		for(Iterator<ShipOnBattlefield> i=ships.iterator();i.hasNext();){
+			
+			if(i.next().isAlive())
+				return false;
+			
+		}
+		return true;
+		
+	}
+	
+	/**
 	 * prints the battlefield
 	 * 
 	 * @author R.Dietrich
@@ -199,9 +215,9 @@ public class Battlefield implements BattlefieldConstants{
 	
 		for(Iterator<ShipOnBattlefield> i=ships.iterator();i.hasNext();){
 			
-			//ship refresh
+			//refresh ship
 			i.next().hitByShot(coords, weapon);
-			//bf refresh
+			//refresh battlefield
 			hits[coords.getX()][coords.getY()]=true;
 			
 		}

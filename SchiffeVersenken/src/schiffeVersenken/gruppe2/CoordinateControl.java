@@ -155,7 +155,7 @@ public class CoordinateControl implements Control{
 			String in = scan.nextLine();
 			in.trim();
 			if(in.length() == 2){
-				Coordinate shoot = new Coordinate(Integer.parseInt(in.substring(1))-1,(char)in.charAt(0)-1);
+				Coordinate shoot = new Coordinate(Integer.parseInt(in.substring(1))-1,(char)(in.charAt(0)-1));
 				if(canCreateCoordinate(shoot)){
 					retVal = true;
 					return shoot;

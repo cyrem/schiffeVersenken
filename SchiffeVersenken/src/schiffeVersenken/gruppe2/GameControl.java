@@ -74,28 +74,41 @@ public class GameControl implements Control,BattlefieldConstants{
 		
 		System.out.println("It is time for player1 to create his ships!");
 		try{
-		player1.addShips();
-		}catch(Exception e){System.err.println(e.toString());}
+			player1.addShips();
+		}catch(CannotPlaceShipsException e){System.err.println(e.toString());}
 		
 		System.out.println("It is time for player2 to create his ships!");
 		try{
-		player2.addShips();
-		}catch(Exception e){System.err.println(e.toString());}
+			player2.addShips();
+		}catch(CannotPlaceShipsException e){System.err.println(e.toString());}
 		
 	}
 	
+	/**
+	 * game play: shooting
+	 * 
+	 * @author D.Hartkorn
+	 * modified by:-
+	 */
 	public void shoot(){
 		
-		while(true){
+		while(player1.getBattlefield().noMoreShips()==false && player2.getBattlefield().noMoreShips()==false){
 			
 			player1.shoot();
-			if(player2  instanceof Human)
+			//if(player2  instanceof Human)
 				System.out.println(player2.getBattlefield().toString());
-			player2.shoot();
-			if(player1  instanceof Human)
-				System.out.println(player1.getBattlefield().toString());
+			if(player2.getBattlefield().noMoreShips()==false){
+				player2.shoot();
+				//if(player1  instanceof Human)
+					System.out.println(player1.getBattlefield().toString());
+			}
 			
 		}
+		
+		if(player1.getBattlefield().noMoreShips()==false)
+			System.out.println("Player 1 ("+player1.getTypeName()+") won!");
+		else
+			System.out.println("Player 2 ("+player2.getTypeName()+") won!");
 		
 	}
 	

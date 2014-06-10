@@ -50,13 +50,13 @@ public class Ship{
 			return;
 		
 		if(weapon.getDestroyShipInstant()==true){
-			for(int x=i; x < getWidth(); x++){
-				for(int y=j; y < getHeight(); y++){
-					this.hits[x][y]=true;
+			for(int x=0; x < width; x++){
+				for(int y=0; y < height; y++){
+					hits[x][y]=true;
 				}
 			}
 		}else{
-			this.hits[i][j]=true;
+			hits[i][j]=true;
 		}
 		
 	}
@@ -71,11 +71,14 @@ public class Ship{
 	public boolean isAlive(){
 		
 		int i=0;
-		int j=0;
-		//the ship is alive when a unharmed position is found
+		int j;
+		//the ship is alive when an unharmed position is found
 		while(i<width){
+			j=0;
 			while(j<height){
-				if (hits[i][j]==false)
+				System.out.println("i="+i+"___");
+				System.out.println("j="+j+"["+hits[i][j]);
+				if(hits[i][j]==false)
 					return true;
 				j++;
 			}
