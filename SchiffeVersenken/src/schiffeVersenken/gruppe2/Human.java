@@ -84,6 +84,11 @@ public class Human implements Player,ShipConstants{
 		
 	}
 	
+	public void addShip(int shipSizeIndex,Coordinate c){
+		bf.getShipControl().addShipToBattlefield(bf.getShipControl().createShip(shipSizeIndex), c.getX(), c.getY(), shipSizeIndex);
+		
+	}
+	
 	/**
 	 * adds all the ships
 	 * 
@@ -117,12 +122,13 @@ public class Human implements Player,ShipConstants{
 				if(shipsToPlaceLeft[shipSizeIndex]==0){
 					System.out.println("No more ships of this type left!");
 				}else{
-					//let him chose the coordinates
-					System.out.println("Chose an x-coordinate");
-					x=scanner.nextInt();
-					System.out.println("Chose an y-coordinate");
-					y=scanner.nextInt();
-					addShip(shipSizeIndex,x-1,y-1);
+					Coordinate c =this.bf.getCoordinateControl().getLocation();
+//					//let him chose the coordinates
+//					System.out.println("Chose an x-coordinate");
+//					x=scanner.nextInt();
+//					System.out.println("Chose an y-coordinate");
+//					y=scanner.nextInt();
+					addShip(shipSizeIndex,c);
 				}
 			}
 			
