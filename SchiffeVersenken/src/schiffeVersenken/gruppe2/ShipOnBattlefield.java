@@ -17,9 +17,14 @@ public class ShipOnBattlefield extends Ship{
 		
 	}
 	
+	/**
+	 * @author D.Kern
+	 * modified by:D.hartkorn(translate coords)
+	 */
 	public void hitByShot(Coordinate coords, Weapon weapon) {
 		
-		super.hitByShot(coords, weapon);
+		//translate positions
+		super.hitByShot(new Coordinate(coords.getX()-this.coords.getX(),coords.getY()-this.coords.getY()), weapon);
 	}
 
 	public boolean isAlive(){

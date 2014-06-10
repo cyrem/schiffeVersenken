@@ -6,7 +6,7 @@ import java.util.Vector;
 /**
  * 
  * @author Mathias Jürgens
- * 
+ * modified by:D.Hartkorn
  *
  */
 
@@ -18,34 +18,41 @@ public class WeaponControl implements WeaponConstants {
 	WeaponControl() {
 		// initialize weapons
 		for (Weapon w : WeaponConstants.weapons) {
-			this.avaibleWeapons.add(new Weapon(w.getName(), w.getAmount(), w.getDescription()));
+			this.avaibleWeapons.add(new Weapon(w.getName(), w.getAmount(), w.getDescription(), w.getDestroyShipInstant()));
 		}
 	}
+	
+	public Weapon[] getWeapons(){
+		
+		return weapons;
+		
+	}
+	
 	/**
 	 * Selects from available weapons
 	 * @author Mathias Jürgens
-	 * 
+	 * modified by:D.Hartkorn(returns weapon, not name)
 	 *
 	 */
-	public String selectWeapon() {
+	public Weapon selectWeapon() {
 		System.out.println("Select a Weapon");
 		boolean retVal = false;
 		//repeat until valid selection
 		//assumes at least one option available
 		while (retVal == false) {
 			for (int i = 0; i < this.avaibleWeapons.size(); i++) {
-				if (this.avaibleWeapons.get(i).getAmount() > 0) {
+				if (this.avaibleWeapons.get(i).getAmount() > 0 || this.avaibleWeapons.get(i).getAmount() == -1) {
 					System.out.println((i + 1) + " "+ this.avaibleWeapons.get(i).getName() + ", "+ this.avaibleWeapons.get(i).getDescription());
 				}
 			}
 			
 			int auswahl = scan.nextInt();
 	
-			if (auswahl > 0 && auswahl < this.avaibleWeapons.size() - 1
+			if (auswahl > 0 && auswahl < this.avaibleWeapons.size()
 					&& this.avaibleWeapons.get(auswahl).getAmount() != 0) {
 				retVal = true;
 				this.avaibleWeapons.get(auswahl).decreaseAmmo();
-				return this.avaibleWeapons.get(auswahl).getName();
+				return this.avaibleWeapons.get(auswahl);
 			} else {
 				System.out.println("Wrong number");
 			}

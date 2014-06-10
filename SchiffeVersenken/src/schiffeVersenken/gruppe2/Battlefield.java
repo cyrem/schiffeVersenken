@@ -186,41 +186,26 @@ public class Battlefield implements BattlefieldConstants{
 		return result;
 		
 	}	
-	/**
-	 * pick loc to shoot
-	 * 
-	 * @author Mathias Jürgens
-	 * 
-	 */
-	public Coordinate shootLoc(){
-		Scanner scan = new Scanner(System.in);
-		boolean retVal = false;
-		while(retVal ==false){
-			System.out.println("Choose Coords to shoot, Example Format: B7");
-			String in = scan.nextLine();
-			in.trim();
-			if(in.length() == 2){
-				Coordinate shoot = new Coordinate(Integer.parseInt(in.substring(1)),(char)in.charAt(0));
-				if(this.coordsControl.canCreateCoordinate(shoot)){
-					retVal = true;
-					scan.close();
-					return shoot;
-				}else{
-					System.out.println("Invalid Coordinates, try again");
-				}
-			}
-		}
-		scan.close();
-		return null;
-	}
 	
-	public void checkHit(Coordinate coords, Weapon weapon){
-		for(int i=0; i<ships.size(); i++){
-			Coordinate c = ships.get(i).getCoordinate();
-			if(c.getX()==coords.getX() && c.getY()==coords.getY()){
-				shipOnBattleField.hitByShot(coords, weapon);
-			}
+	/**
+	 * 
+	 * 
+	 * @author D.Kern
+	 * modified by:D.Hartkorn(hit battlefield and do not check on ships)
+	 * @param coords
+	 * @param weapon
+	 */
+	public void getHit(Coordinate coords, Weapon weapon){
+	
+		for(Iterator<ShipOnBattlefield> i=ships.iterator();i.hasNext();){
+			
+			//ship refresh
+			i.next().hitByShot(coords, weapon);
+			//bf refresh
+			hits[coords.getX()][coords.getY()]=true;
+			
 		}
+		
 	}
 
 }

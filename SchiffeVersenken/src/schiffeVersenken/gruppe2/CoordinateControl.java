@@ -1,5 +1,7 @@
 package schiffeVersenken.gruppe2;
 
+import java.util.Scanner;
+
 /**
  * 
  * @author D.Hartkorn
@@ -8,6 +10,7 @@ package schiffeVersenken.gruppe2;
  */
 public class CoordinateControl implements Control{
 
+	Scanner scan = new Scanner(System.in);
 	private Battlefield bf;
 	
 	CoordinateControl(Battlefield bf){
@@ -42,7 +45,7 @@ public class CoordinateControl implements Control{
 		public boolean isValidCoordinate(Battlefield bf){
 			
 			//checks if the coordinate is in the range of the battlefield
-			if(super.getX()<0 || super.getX()>bf.getWidth() || super.getY()<0 || super.getY()>bf.getHeight())
+			if(super.getX()<0 || super.getX()>=bf.getWidth() || super.getY()<0 || super.getY()>=bf.getHeight())
 				return false;
 			return true;
 			
@@ -134,6 +137,34 @@ public class CoordinateControl implements Control{
 	public Coordinate createCoordinateWithOffset(int x,int y,int offsetX,int offsetY){
 		
 		return new Coordinate(x+offsetX,y+offsetY);
+		
+	}
+	
+	/**
+	 * pick loc to shoot
+	 * 
+	 * @author Mathias Jürgens
+	 * modified by:D.Hartkorn(moved from battlefield to this class)
+	 * 
+	 */
+	public Coordinate shootLoc(){
+		
+		boolean retVal = false;
+		while(retVal ==false){
+			System.out.println("Choose Coords to shoot, Example Format: B7");
+			String in = scan.nextLine();
+			in.trim();
+			if(in.length() == 2){
+				Coordinate shoot = new Coordinate(Integer.parseInt(in.substring(1))-1,(char)in.charAt(0)-1);
+				if(canCreateCoordinate(shoot)){
+					retVal = true;
+					return shoot;
+				}else{
+					System.out.println("Invalid Coordinates, try again");
+				}
+			}
+		}
+		return null;
 		
 	}
 	

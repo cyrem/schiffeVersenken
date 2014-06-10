@@ -14,6 +14,7 @@ public class Main {
 		GameControl gc=new GameControl();
 		gc.init();
 		gc.addShips();
+		gc.shoot();
 		//----------GAME END----------
 
 	}

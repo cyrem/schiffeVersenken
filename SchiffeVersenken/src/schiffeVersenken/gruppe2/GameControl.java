@@ -52,11 +52,15 @@ public class GameControl implements Control,BattlefieldConstants{
 		}
 		
 		//add battlefields
-		Battlefield bf1=new Battlefield(bfWidth,bfHeight,player1);
-		Battlefield bf2=new Battlefield(bfWidth,bfHeight,player2);
-//		System.out.println(bf1.toString());
+		new Battlefield(bfWidth,bfHeight,player1);
+		new Battlefield(bfWidth,bfHeight,player2);
+		
+		//opponents
+		player1.setOpponent(player2);
+		player2.setOpponent(player1);
+		
+		//System.out.println(bf1.toString());
 		System.out.println(this.player1.toString());
-		bf1.shoot();
 		
 	}
 	
@@ -77,6 +81,21 @@ public class GameControl implements Control,BattlefieldConstants{
 		try{
 		player2.addShips();
 		}catch(Exception e){System.err.println(e.toString());}
+		
+	}
+	
+	public void shoot(){
+		
+		while(true){
+			
+			player1.shoot();
+			if(player2  instanceof Human)
+				System.out.println(player2.getBattlefield().toString());
+			player2.shoot();
+			if(player1  instanceof Human)
+				System.out.println(player1.getBattlefield().toString());
+			
+		}
 		
 	}
 	

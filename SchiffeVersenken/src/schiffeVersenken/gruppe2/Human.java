@@ -14,17 +14,32 @@ public class Human implements Player,ShipConstants{
 	private int shipsToPlaceLeft[];
 	private Scanner scanner = new Scanner(System.in);
 	private WeaponControl wc;
+	private Player opponent;
 	
 	public Human(){
 		shipsToPlaceLeft=new int[shipSizes.length];
 		for(int i=0;i<shipSizes.length;i++)
 			shipsToPlaceLeft[i]=shipSizes[i].getAmount();
 		
+		wc=new WeaponControl();
+		
+	}
+	
+	public void setOpponent(Player opponent){
+		
+		this.opponent=opponent;
+		
 	}
 	
 	public void setBattlefield(Battlefield bf){
 		
 		this.bf=bf;
+		
+	}
+	
+	public Battlefield getBattlefield(){
+		
+		return bf;
 		
 	}
 	
@@ -83,10 +98,10 @@ public class Human implements Player,ShipConstants{
 			System.out.println("Chose a ship to place:");
 			i=0;
 			while(i<shipSizes.length){
-				System.out.println(i+": Ship "+(i+1)+": (Width: "+shipSizes[i].getWidth()+"; Height: "+shipSizes[i].getHeight()+"; Left: "+shipsToPlaceLeft[i]);
+				System.out.println((i+1)+": Ship "+(i+1)+": (Width: "+shipSizes[i].getWidth()+"; Height: "+shipSizes[i].getHeight()+"; Left: "+shipsToPlaceLeft[i]);
 				i++;
 			}
-			shipSizeIndex=scanner.nextInt();
+			shipSizeIndex=scanner.nextInt()-1;
 			//check whether the option is o.k
 			if(shipSizeIndex<0 || shipSizeIndex>=shipSizes.length){
 				System.out.println("Wrong index!");
@@ -100,7 +115,7 @@ public class Human implements Player,ShipConstants{
 					x=scanner.nextInt();
 					System.out.println("Chose an y-coordinate");
 					y=scanner.nextInt();
-					addShip(shipSizeIndex,x,y);
+					addShip(shipSizeIndex,x-1,y-1);
 				}
 			}
 			
@@ -115,15 +130,16 @@ public class Human implements Player,ShipConstants{
 	 * pick loc to shoot
 	 * 
 	 * @author Mathias Jürgens
+	 * modified by:D.Hartkorn(hit)
 	 * 
 	 */
 	
 	@Override
 	public void shoot() {
-		String WeaponSelection = this.wc.selectWeapon();
-		Coordinate shootLoc = this.bf.shootLoc();
+		Weapon weaponSelection = wc.selectWeapon();
+		Coordinate shootLoc = bf.getCoordinateControl().shootLoc();
 				
-		
+		opponent.getBattlefield().getHit(shootLoc, weaponSelection);
 	}
 	
 }

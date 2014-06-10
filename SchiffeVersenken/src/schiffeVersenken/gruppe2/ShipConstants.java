@@ -8,6 +8,7 @@ package schiffeVersenken.gruppe2;
  */
 public interface ShipConstants {
 
-	public final ShipSize shipSizes[]= {new ShipSize(2,1,4),new ShipSize(4,1,3)};
-	
+	//public final ShipSize shipSizes[]= {new ShipSize(2,1,4),new ShipSize(4,1,3)};
+	//-----TEST-----
+	public final ShipSize shipSizes[]= {new ShipSize(2,1,1),new ShipSize(4,1,0)};
 }

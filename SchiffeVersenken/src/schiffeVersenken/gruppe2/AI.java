@@ -13,6 +13,7 @@ public class AI implements Player,ShipConstants{
 	private Battlefield bf;
 	private WeaponControl wc;
 	private int shipsToPlaceLeft[];
+	private Player opponent;
 	
 	public AI(){
 		
@@ -20,9 +21,15 @@ public class AI implements Player,ShipConstants{
 		for(int i=0;i<shipSizes.length;i++)
 			shipsToPlaceLeft[i]=shipSizes[i].getAmount();
 		
+		wc=new WeaponControl();
+		
 	}
 	
-	
+	public void setOpponent(Player opponent){
+		
+		this.opponent=opponent;
+		
+	}
 
 	@Override
 	public void setWeaponControl(WeaponControl w){
@@ -30,6 +37,12 @@ public class AI implements Player,ShipConstants{
 	}
 	public WeaponControl getWeaponControl(){
 		return this.wc;
+	}
+	
+	public Battlefield getBattlefield(){
+		
+		return bf;
+		
 	}
 	
 	public void setBattlefield(Battlefield bf){
@@ -111,15 +124,19 @@ public class AI implements Player,ShipConstants{
 	 * pick loc to shoot
 	 * 
 	 * @author Mathias Jürgens
+	 * modified by:D.Hartkorn(hit)
 	 * 
 	 */
 
 	@Override
 	public void shoot() {
-		String WeaponSelection = this.wc.selectWeapon();
-		Coordinate shootLoc = this.bf.shootLoc();
-				
+		Weapon weaponSelection = wc.getWeapons()[0];
+		System.out.println("AI: I just chose my weapon!");
+		Coordinate shootLoc = new Coordinate((int)(Math.random()*bf.getWidth()),(int)(Math.random()*bf.getHeight()));
+		System.out.println("AI: I just chose a shot location!");		
 		
+		opponent.getBattlefield().getHit(shootLoc, weaponSelection);
+		System.out.println("AI: I just shot!");
 	}
 
 

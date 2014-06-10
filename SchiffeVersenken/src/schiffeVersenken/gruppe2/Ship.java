@@ -11,7 +11,6 @@ public class Ship{
 	private final int width;
 	private final int height;
 	private boolean hits[][];
-	boolean alive=true;
 	
 	/**
 	 * Constructor
@@ -36,27 +35,31 @@ public class Ship{
 	}
 	
 	/**
-	 * TO DO
+	 * Handle shot at a specific position
 	 * 
-	 * @author -
-	 * modified by:-
+	 * @author D.Kern-
+	 * modified by:D.Hartkorn(avoid checking for specific weapon names;stop)
 	 */
 	public void hitByShot(Coordinate coords, Weapon weapon){
 		
 		int i=coords.getX();
 		int j=coords.getY();
-			if(weapon.getName().equals("Nuclear")){
-				for(int x=i; x < getWidth(); x++){
-					for(int y=j; y < getHeight(); y++){
-						this.hits[x][y]=true;
-					}
+		
+		//stop when ship is not shot at
+		if(i<0 || i>=width || j<0 || j>=height)
+			return;
+		
+		if(weapon.getDestroyShipInstant()==true){
+			for(int x=i; x < getWidth(); x++){
+				for(int y=j; y < getHeight(); y++){
+					this.hits[x][y]=true;
 				}
-				this.alive=false;
-			}else{
-				this.hits[i][j]=true;
-				this.alive=this.isAlive();
 			}
+		}else{
+			this.hits[i][j]=true;
 		}
+		
+	}
 	
 	/**
 	 * returns whether the ship is still alive
