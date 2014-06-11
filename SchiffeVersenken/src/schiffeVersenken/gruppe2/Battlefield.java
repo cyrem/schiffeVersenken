@@ -243,11 +243,16 @@ public class Battlefield implements BattlefieldConstants{
 		for(Iterator<ShipOnBattlefield> i=ships.iterator();i.hasNext();){
 			
 			//refresh ship
-			if(i.next().hitByShot(coords, weapon))
+			if(i.next().hitByShot(coords, weapon)){
 				returnTrue=true;
+				System.out.println("DIRECT HIT!!!");
+
+			}else{
+				System.out.println("Miss....");
+			}
 			//refresh battlefield
 			hits[coords.getX()][coords.getY()]=true;
-			
+
 		}
 		return returnTrue;
 		
