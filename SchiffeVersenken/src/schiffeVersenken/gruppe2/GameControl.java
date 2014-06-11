@@ -1,6 +1,8 @@
 package schiffeVersenken.gruppe2;
 
 import java.util.Scanner;
+import java.util.Timer;
+import java.util.TimerTask;
 
 /**
  * 
@@ -13,6 +15,8 @@ public class GameControl implements Control,BattlefieldConstants{
 	private Scanner scanner = new Scanner(System.in);
 	private Player player1;
 	private Player player2;
+	private Timer timer= new Timer();
+	private int timeLimit = 15*60;
 	
 	GameControl(){}
 	
@@ -59,6 +63,15 @@ public class GameControl implements Control,BattlefieldConstants{
 		player1.setOpponent(player2);
 		player2.setOpponent(player1);
 		
+		
+		
+		this.timer.schedule(new TimerTask() {
+			  @Override
+			  public void run() {
+			    System.out.println("took to long, you all loose!");
+			    System.exit(0);
+			  }
+			}, 15*60*1000);
 	}
 	
 	/**
