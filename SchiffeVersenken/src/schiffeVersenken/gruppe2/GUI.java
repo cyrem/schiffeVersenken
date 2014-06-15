@@ -1,18 +1,34 @@
 package schiffeVersenken.gruppe2;
 
-public interface GUI {
+import java.util.Scanner;
+
+public class GUI {
 	
 	/**
 	 * 
-	 * @author M.Jürgens
-	 * modified by:
+	 * @author M.JÃ¼rgens
+	 * modified by:D.Hartkorn
 	 *
 	 */
 	
-	public void print(String s);
-	public Coordinate getCoordinate(String printBefore);
-	public int getInt(String printBefore);
+	private static Scanner scanner = new Scanner(System.in);
 	
+	public static void printText(String s){
+		
+		System.out.println(s);
+		
+	}
 	
+	public static int typeInt(){
+		
+		return scanner.nextInt();
+		
+	}
+	
+	public static String typeString(){
+		
+		return scanner.nextLine();
+		
+	}
 
 }

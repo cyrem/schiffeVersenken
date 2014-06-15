@@ -3,7 +3,7 @@ package schiffeVersenken.gruppe2;
 /**
  * 
  * @author D.Hartkorn
- * modified by:M.J�rgens
+ * modified by:M.Jürgens
  *
  */
 public interface Player {
@@ -13,7 +13,8 @@ public interface Player {
 	public void setWeaponControl(WeaponControl c);
 	public void setBattlefield(Battlefield bf);
 	public Battlefield getBattlefield();
-	public boolean addShip(int shipSizeIndex,int x,int y);
+	public void addShips() throws CannotPlaceShipsException;
+	public void addShip(int shipSizeIndex,Coordinate c);
 	public int[] getShipsToPlaceLeft();
 	public void setShipsToPlaceLeft(int index, int amount);
 	public void shoot();

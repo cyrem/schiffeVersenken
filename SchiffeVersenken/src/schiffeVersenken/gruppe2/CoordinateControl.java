@@ -69,7 +69,7 @@ public class CoordinateControl implements Control {
 	/**
 	 * checks if the coordinate fits onto the battlefield
 	 * 
-	 * @author M.Jürgens modified by:-
+	 * @author M.Jï¿½rgens modified by:-
 	 * @param x
 	 * @param y
 	 * @return
@@ -139,7 +139,7 @@ public class CoordinateControl implements Control {
 	/**
 	 * get Location
 	 * 
-	 * @author Mathias Jürgens modified by:D.Hartkorn(moved from battlefield to
+	 * @author Mathias JÃ¼rgens modified by:D.Hartkorn(moved from battlefield to
 	 *         this class)
 	 * 
 	 */
@@ -147,8 +147,8 @@ public class CoordinateControl implements Control {
 		boolean retVal = false;
 		Coordinate shoot;
 		while (retVal == false) {
-			System.out.println("Input Coordinates, Example Format: B7");
-			String in = scan.nextLine();
+			GUI.printText("Input Coordinates, Example Format: B7");
+			String in = GUI.typeString();
 			in.trim();
 
 			if (in.length() == 2) {
@@ -159,7 +159,7 @@ public class CoordinateControl implements Control {
 						retVal = true;
 						return shoot;
 					} else {
-						System.out.println("Invalid Coordinates, try again");
+						GUI.printText("Invalid Coordinates, try again");
 					}
 				} catch (Exception e) {
 					//
@@ -174,7 +174,7 @@ public class CoordinateControl implements Control {
 	/**
 	 * pick loc to shoot
 	 * 
-	 * @author Mathias Jürgens modified by:D.Hartkorn(moved from battlefield to
+	 * @author Mathias Jï¿½rgens modified by:D.Hartkorn(moved from battlefield to
 	 *         this class)
 	 * 
 	 */

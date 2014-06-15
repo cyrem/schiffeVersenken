@@ -73,18 +73,53 @@ public class Human implements Player,ShipConstants{
 	 * It requires right information!!!
 	 * 
 	 * @author D.Hartkorn
-	 * modified by:-
+	 * modified by:M.Jürgens
 	 */
-	public boolean addShip(int shipSizeIndex,int x, int y){
-		
-		if(bf.getShipControl().addShipToBattlefield(bf.getShipControl().createShip(shipSizeIndex), x, y, shipSizeIndex))
-			return true;
-		return false;
+	public void addShip(int shipSizeIndex,Coordinate c){
+		bf.getShipControl().addShipToBattlefield(bf.getShipControl().createShip(shipSizeIndex), c.getX(), c.getY(), shipSizeIndex);
 		
 	}
 	
-	public void addShip(int shipSizeIndex,Coordinate c){
-		bf.getShipControl().addShipToBattlefield(bf.getShipControl().createShip(shipSizeIndex), c.getX(), c.getY(), shipSizeIndex);
+	/**
+	 * adds all the ships
+	 * 
+	 * @author D.Hartkorn
+	 * modified by:-
+	 */
+	public void addShips(){
+		
+		int i;
+		int shipSizeIndex;
+		while(bf.getShipControl().noMoreShipsToPlace()==false){
+			
+			//print the battlefield first
+			GUI.printText(bf.toString());
+			
+			//show the player the options
+			GUI.printText("Chose a ship to place:");
+			i=0;
+			while(i<shipSizes.length){
+				System.out.println((i+1)+": Ship "+(i+1)+": (Width: "+shipSizes[i].getWidth()+"; Height: "+shipSizes[i].getHeight()+"; Left: "+shipsToPlaceLeft[i]);
+				i++;
+			}
+			shipSizeIndex=GUI.typeInt()-1;
+			//check whether the option is o.k
+			if(shipSizeIndex<0 || shipSizeIndex>=shipSizes.length){
+				GUI.printText("Wrong index!");
+			}else{
+				//check whether there are ships of the type left
+				if(shipsToPlaceLeft[shipSizeIndex]==0){
+					GUI.printText("No more ships of this type left!");
+				}else{
+					Coordinate c =this.bf.getCoordinateControl().getLocation();
+					addShip(shipSizeIndex,c);
+				}
+			}
+			
+		}
+		
+		//final print after creation
+		GUI.printText(bf.toString());
 		
 	}
 	

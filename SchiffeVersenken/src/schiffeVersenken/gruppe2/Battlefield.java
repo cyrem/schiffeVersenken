@@ -7,7 +7,7 @@ import java.util.LinkedList;
  * 
  * @author D.Hartkorn
  * modified by:R.Dietrich(added toString)
- * modified by:M.J�rgens
+ * modified by:M.Jürgens
  *
  */
 public class Battlefield implements BattlefieldConstants{
@@ -238,10 +238,10 @@ public class Battlefield implements BattlefieldConstants{
 			//refresh ship
 			if(i.next().hitByShot(coords, weapon)){
 				returnTrue=true;
-				System.out.println("DIRECT HIT!!!");
+				GUI.printText("DIRECT HIT!!!");
 
 			}else{
-				System.out.println("Miss....");
+				GUI.printText("Miss....");
 			}
 			//refresh battlefield
 			hits[coords.getX()][coords.getY()]=true;
