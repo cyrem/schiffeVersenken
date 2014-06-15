@@ -137,7 +137,7 @@ public class ShipControl implements Control,ShipConstants{
 	 * @param x
 	 * @param y
 	 */
-	public void addShipToBattlefield(Ship ship,int x,int y, int shipIndex){
+	public boolean addShipToBattlefield(Ship ship,int x,int y, int shipIndex){
 		
 		//checks if the ship can be placed onto the given position of the battlefield
 		if(canCreateShipAtPosition(ship,x,y)){
@@ -145,8 +145,9 @@ public class ShipControl implements Control,ShipConstants{
 			//adds the ship
 			bf.getShips().addLast(shipOnBattlefield);
 			bf.getPlayer().setShipsToPlaceLeft(shipIndex,-1);
+			return true;
 		}else{
-			System.out.println("Cannot create Ship at this position");
+			return false;
 		}
 		
 	}

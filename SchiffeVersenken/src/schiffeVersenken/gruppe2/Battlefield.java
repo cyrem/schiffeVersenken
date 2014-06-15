@@ -7,7 +7,7 @@ import java.util.LinkedList;
  * 
  * @author D.Hartkorn
  * modified by:R.Dietrich(added toString)
- * modified by:M.Jürgens
+ * modified by:M.Jï¿½rgens
  *
  */
 public class Battlefield implements BattlefieldConstants{
@@ -163,7 +163,6 @@ public class Battlefield implements BattlefieldConstants{
 		
 		String result = "";
 		char[][] field = new char[width][height];
-		int[][] ships = this.countShipsForEachPosition();
 		
 		//set char array
 		for(int x = 0; x < width; x++){
@@ -172,12 +171,6 @@ public class Battlefield implements BattlefieldConstants{
 				if(hits[x][y]){
 					field[x][y] = 'o';
 				}
-				//if(ships[x][y] > 0){
-					//field[x][y] = 'S';
-					//if(hits[x][y]){
-					//	field[x][y] = 'X';
-					//}
-				//}
 			}
 		}
 		
