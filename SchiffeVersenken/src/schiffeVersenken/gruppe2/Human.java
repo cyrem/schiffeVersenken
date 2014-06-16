@@ -93,7 +93,7 @@ public class Human implements Player,ShipConstants{
 		while(bf.getShipControl().noMoreShipsToPlace()==false){
 			
 			//print the battlefield first
-			GUI.printText(bf.toString());
+			GUI.printBattlefield(bf);
 			
 			//show the player the options
 			GUI.printText("Chose a ship to place:");
@@ -119,7 +119,7 @@ public class Human implements Player,ShipConstants{
 		}
 		
 		//final print after creation
-		GUI.printText(bf.toString());
+		GUI.printBattlefield(bf);
 		
 	}
 	
@@ -136,7 +136,9 @@ public class Human implements Player,ShipConstants{
 		Weapon weaponSelection = wc.selectWeapon();
 		Coordinate shootLoc = bf.getCoordinateControl().shootLoc();
 				
-		while(opponent.getBattlefield().getHit(shootLoc, weaponSelection));
+		while(opponent.getBattlefield().getHit(shootLoc, weaponSelection)){
+			shootLoc = bf.getCoordinateControl().shootLoc();
+		}
 	}
 	
 }

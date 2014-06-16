@@ -18,6 +18,7 @@ public class GameControl implements Control,BattlefieldConstants{
 	private Player opponents[]=new Player[playerAmount];
 	private Timer timer= new Timer();
 	private int timeLimit = 15*60;
+	private int winner = 0;
 	
 	GameControl(){}
 	
@@ -107,6 +108,8 @@ public class GameControl implements Control,BattlefieldConstants{
 			
 		}
 		
+		GUI.printText("Player "+winner+" wins");
+		
 	}
 	
 	/**
@@ -130,7 +133,7 @@ public class GameControl implements Control,BattlefieldConstants{
 			}
 		}
 		
-		GUI.printText("Player "+playerWin+" wins");
+		winner=playerWin;
 		return true;
 		
 	}

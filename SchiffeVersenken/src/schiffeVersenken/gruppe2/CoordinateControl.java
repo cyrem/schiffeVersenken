@@ -146,8 +146,9 @@ public class CoordinateControl implements Control {
 	public Coordinate getLocation() {
 		boolean retVal = false;
 		Coordinate shoot;
+		
+		GUI.printText("Input Coordinates, Example Format: B7");
 		while (retVal == false) {
-			GUI.printText("Input Coordinates, Example Format: B7");
 			String in = GUI.typeString();
 			in.trim();
 

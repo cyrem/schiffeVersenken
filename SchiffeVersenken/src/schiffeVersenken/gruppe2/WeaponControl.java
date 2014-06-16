@@ -1,6 +1,5 @@
 package schiffeVersenken.gruppe2;
 
-import java.util.Scanner;
 import java.util.Vector;
 
 /**
@@ -47,12 +46,9 @@ public class WeaponControl implements WeaponConstants {
 							+ this.avaibleWeapons.get(i).getDescription());
 				}
 			}
-
-			if (scan.hasNextInt()) {
 				int auswahl = GUI.typeInt() - 1;
-				scan.nextLine();
-				if (auswahl >= 0 && auswahl < this.avaibleWeapons.size()
-						&& this.avaibleWeapons.get(auswahl).getAmount() != 0) {
+
+				if (auswahl >= 0 && auswahl < this.avaibleWeapons.size() && this.avaibleWeapons.get(auswahl).getAmount() != 0) {
 					retVal = true;
 					this.avaibleWeapons.get(auswahl).decreaseAmmo();
 					return this.avaibleWeapons.get(auswahl);
@@ -60,11 +56,6 @@ public class WeaponControl implements WeaponConstants {
 					GUI.printText("Wrong number");
 				}
 			}
-			
-			//has to get rest of line, otherwise ignores input -> endless loop
-			scan.nextLine();
-
-		}
 		return null;
 	}
 
