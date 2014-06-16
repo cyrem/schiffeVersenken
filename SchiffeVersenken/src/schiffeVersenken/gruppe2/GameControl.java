@@ -77,7 +77,7 @@ public class GameControl implements Control,BattlefieldConstants{
 			GUI.printText("It is time for player"+(i+1)+" to create his ships!");
 			try{
 				players[i].addShips();
-			}catch(CannotPlaceShipsException e){System.err.println(e.toString());}
+			}catch(CannotPlaceShipsException e){GUI.printError(e.toString());}
 		}
 		
 	}

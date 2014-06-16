@@ -16,6 +16,9 @@ public class GUI {
 	public static void printText(String s){
 		System.out.println(s);
 	}
+	public static void printError(String s){
+		System.err.println(s);
+	}
 	
 	public static void printBattlefield(Battlefield bf){
 		System.out.println(bf.toString());
